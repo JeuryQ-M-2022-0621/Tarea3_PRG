@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Tareas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #taskInput {
+      margin-bottom: 10px;
+    }
+    #taskList li {
+      cursor: pointer;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Tareas</h1>
+  <div>
+  
+    <button onclick="addTask()">Agregar tarea</button>
+  </div>
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskList = document.getElementById("taskList");
+
+      if (taskInput.value.trim() === "") {
+        alert("Por favor, ingresa una tarea válida.");
+        return;
+      }
+
+      const newTask = document.createElement("li");
+      newTask.textContent = taskInput.value;
+      newTask.onclick = function () {
+        this.classList.toggle("completed");
+      };
+
+      taskList.appendChild(newTask);
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>
